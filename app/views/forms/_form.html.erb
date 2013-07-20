@@ -108,25 +108,25 @@
   <div class="field">
     <%= f.label :categories_list_of_works, t(:categories_list_of_works) %><br />
     <%= f.text_area :categories_list_of_works %>
-    <% 1.upto(3) do |category_id| %>
+    <% 1.upto(10) do |category_id| %>
       <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.\z/ }).each do |category| %>
         <% name_id = category_id %>
         <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
         <%= f.label name_id, category[:path] + " " + category[:name] %><br/>
         <div class="subcategory" id= <%= name_id %> >
-          <% 1.upto(70) do |subcategory_id| %>
+          <% 1.upto(100) do |subcategory_id| %>
             <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.#{subcategory_id}\.\z/ }).each do |category| %>
               <% name_id = category_id + subcategory_id * 10 %>
               <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
               <%= f.label name_id, category[:path] + " " + category[:name] %><br/>
               <div class="subsubcategory" id= <%= name_id %> >
-                 <% 1.upto(10) do |subsubcategory_id| %>
+                 <% 1.upto(20) do |subsubcategory_id| %>
                    <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.#{subcategory_id}\.#{subsubcategory_id}\.\z/ }).each do |category| %>
                       <% name_id = category_id + subcategory_id * 10 + subsubcategory_id * 100 %>
                       <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
                       <%= f.label name_id, category[:path] + " " + category[:name] %><br/>
                       <div class="subsubsubcategory" id= <%= name_id %> >
-                         <% 1.upto(10) do |subsubsubcategory_id| %>
+                         <% 1.upto(20) do |subsubsubcategory_id| %>
                             <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.#{subcategory_id}\.#{subsubcategory_id}\.#{subsubcategory_id}\.\z/ }).each do |category| %>
                                <% name_id = category_id + subcategory_id * 10 + subsubcategory_id * 100 + subsubsubcategory_id * 1000 %>
                                <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
