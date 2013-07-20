@@ -1,6 +1,7 @@
 class Form < ActiveRecord::Base
   before_validation do
-    self.phone = phone.gsub(/[^\d]/, "") if attribute_present?("number")
+    self.phone.gsub(/[^\d]/, "")
+    self.fax.gsub(/[^\d]/, "")
   end
   
   attr_accessible :type_of_legal_entity, :actual_address, :address_on_english, :auditors_name, :bank_name, :bank_person, :bik, :categories_list_of_works, :company, :correspondent_account, :creator_name, :current_account, :email, :fax, :inn, :kpp, :ogrn, :phone, :registered_address, :type_of_certificate

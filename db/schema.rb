@@ -27,22 +27,22 @@ ActiveRecord::Schema.define(:version => 20130720045205) do
     t.string   "registered_address"
     t.string   "actual_address"
     t.string   "address_on_english"
-    t.decimal  "phone",                    :precision => 8, :scale => 0
-    t.decimal  "fax",                      :precision => 8, :scale => 0
+    t.string   "phone"
+    t.string   "fax"
     t.string   "email"
-    t.decimal  "inn",                      :precision => 8, :scale => 0
-    t.decimal  "kpp",                      :precision => 8, :scale => 0
-    t.decimal  "ogrn",                     :precision => 8, :scale => 0
+    t.string   "inn"
+    t.string   "kpp"
+    t.string   "ogrn"
     t.string   "bank_name"
     t.string   "current_account"
     t.string   "correspondent_account"
-    t.decimal  "bik",                      :precision => 8, :scale => 0
+    t.string   "bik"
     t.string   "bank_person"
     t.string   "type_of_certificate"
     t.string   "auditors_name"
     t.string   "categories_list_of_works"
-    t.datetime "created_at",                                             :null => false
-    t.datetime "updated_at",                                             :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
 end
