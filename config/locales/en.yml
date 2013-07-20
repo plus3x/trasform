@@ -1,0 +1,27 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+  type_of_legal_entity: "Тип юридического лица"
+  company: "Наименование организации"
+  creator_name: "в лице"
+  registered_adress: "Юридический адресс"
+  actual_adress: "Фактический адресс"
+  adress_on_english: "Адресс на английском языке"
+  phone: "Номер телефона"
+  fax: "Номер факса"
+  email: "Электронный адресс"
+  inn: "ИНН"
+  kpp: "КПП"
+  ogrn: "ОГРН"
+  bank_name: "Название банка"
+  current_account: "Расчётный счёт"
+  correspondent_account: "Корреспонденский счёт"
+  bik: "БИК"
+  bank_person: "Имя вкладчика"
+  type_of_certificate: "Тип сертификата"
+  auditors_name: "Имя(на) аудитора(ов)(ФИО)"
+  categories_list_of_works: "Разделы перечня работ"
+  submit_create_form: "Создать форму"
+  other: "Прочее"

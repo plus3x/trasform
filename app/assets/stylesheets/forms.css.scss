@@ -1,0 +1,83 @@
+// Place all the styles related to the Forms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.document {
+  tr td {
+    padding: 0px;
+    border-bottom: 1px solid black;
+  }
+  
+  tr th {
+    padding: 0px;
+    font-style: bold;
+    text-align: left;
+    border-bottom: 1px solid black;
+  }
+}
+
+.actions {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  
+  input[type='submit'] {
+    width: 100%;
+  }
+  
+  tr td {
+    padding: 0px 20px;
+    margin: 0px;
+    a { text-decoration: none; }
+  }
+}
+
+.field {
+  width: 100%;
+  margin: 0px;
+  label {
+    display:inline-block;
+    width: 200px;
+  }
+  input[type="checkbox"] + label { width: 90%; }
+  input { width: 300px; }
+  input[type="checkbox"] { width: 10px; }
+  textarea#form_categories_list_of_works { display: none; }
+  
+  .subcategory { display: none; padding-left: 10px; }
+  .subsubcategory { display: none; padding-left: 20px; }
+  .subsubsubcategory { display: none; padding-left: 30px; }
+  
+  #otherTextArea { 
+    display: none;
+    width: 80%;
+    height: 100px;
+  }
+  
+  #form_auditors_name {
+    display: none;
+  }
+  
+  // try css action
+  // input[type="checkbox"]:checked + label { color: red; }
+  // input[type="checkbox"]:checked + div.hidden { display: inline; }
+  
+  #form_type_of_legal_entity {}
+  #form_company {}
+  #form_creator_name {}
+  #form_registered_address {}
+  #form_actual_address {}
+  #form_address_on_english {}
+  #form_phone {}
+  #form_fax {}
+  #form_email {}
+  #form_inn {}
+  #form_kpp {}
+  #form_ogrn {}
+  #form_bank_name {}
+  #form_current_account {}
+  #form_correspondent_account {}
+  #form_bik {}
+  #form_bank_person {}
+  #form_type_of_certificate {}
+  #form_categories_list_of_works {}
+}

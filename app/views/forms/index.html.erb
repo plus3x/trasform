@@ -1,0 +1,97 @@
+<h1>Форма для сертификата</h1>
+<table class='document'>
+<% @forms.each do |form| %>
+  <tr>
+    <th><%= t(:type_of_legal_entity) %></th>
+    <td class='type_of_legal_entity'><%= form.type_of_legal_entity %></td>
+  </tr>
+  <tr>
+    <th><%= t(:company) %></th>
+    <td><%= form.company %></td>
+  </tr>
+  <tr>
+    <th><%= t(:creator_name) %></th>
+    <td><%= form.creator_name %></td>
+  </tr>
+  <tr>
+    <th><%= t(:registered_address) %></th>
+    <td><%= form.registered_address %></td>
+  </tr>
+  <tr>
+    <th><%= t(:actual_address) %></th>
+    <td><%= form.actual_address %></td>
+  </tr>
+  <tr>
+    <th><%= t(:address_on_english) %></th>
+    <td><%= form.address_on_english %></td>
+  </tr>
+  <tr>
+    <th><%= t(:phone) %></th>
+    <td><%= form.phone %></td>
+  </tr>
+  <tr>
+    <th><%= t(:fax) %></th>
+    <td><%= form.fax %></td>
+  </tr>
+  <tr>
+    <th><%= t(:email) %></th>
+    <td><%= form.email %></td>
+  </tr>
+  <tr>
+    <th><%= t(:inn) %></th>
+    <td><%= form.inn %></td>
+  </tr>
+  <tr>
+    <th><%= t(:kpp) %></th>
+    <td><%= form.kpp %></td>
+  </tr>
+  <tr>
+    <th><%= t(:ogrn) %></th>
+    <td><%= form.ogrn %></td>
+  </tr>
+  <tr>
+    <th><%= t(:bank_name) %></th>
+    <td><%= form.bank_name %></td>
+  </tr>
+  <tr>
+    <th><%= t(:current_account) %></th>
+    <td><%= form.current_account %></td>
+  </tr>
+  <tr>
+    <th><%= t(:correspondent_account) %></th>
+    <td><%= form.correspondent_account %></td>
+  </tr>
+  <tr>
+    <th><%= t(:bik) %></th>
+    <td><%= form.bik %></td>
+  </tr>
+  <tr>
+    <th><%= t(:bank_person) %></th>
+    <td><%= form.bank_person %></td>
+  </tr>
+  <tr>
+    <th><%= t(:type_of_certificate) %></th>
+    <td><%= form.type_of_certificate %></td>
+  </tr>
+  <tr>
+    <th><%= t(:auditors_name) %></th>
+    <td><%= form.auditors_name %></td>
+  </tr>
+  <tr>
+    <th><%= t(:categories_list_of_works) %></th>
+    <td><%= form.categories_list_of_works %></td>
+  </tr>
+</table>
+  
+<table class='actions'>
+  <tr>
+    <td><%= link_to t(:show_form), form %></td>
+    <td><%= link_to 'Отредактировать', edit_form_path(form) %></td>
+    <td><%= link_to 'Удалить', form, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Form', new_form_path %>

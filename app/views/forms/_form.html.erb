@@ -1,0 +1,152 @@
+<%= form_for(@form) do |f| %>
+  <% if @form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form.errors.count, "ошибок") %> найдено в следующих полях:</h2>
+
+      <ul>
+      <% @form.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :type_of_legal_entity, t(:type_of_legal_entity) %>
+    <%= f.select :type_of_legal_entity, options_for_select(["ООО", "ИП", "ЗАО", "ОАО"]) %>
+  </div>
+  <div class="field">
+    <%= f.label :company, t(:company) %>
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :creator_name, t(:creator_name) %>
+    <%= f.text_field :creator_name %>
+  </div>
+  <div class="field">
+    <%= f.label :registered_address, t(:registered_address) %>
+    <%= f.text_field :registered_address %>
+  </div>
+  <div class="field">
+    <%= f.label :actual_address, t(:actual_address) %>
+    <%= f.text_field :actual_address %>
+  </div>
+  <div class="field">
+    <%= f.label :address_on_english, t(:address_on_english) %>
+    <%= f.text_field :address_on_english %>
+  </div>
+  <div class="field">
+    <%= f.label :phone, t(:phone) %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :fax, t(:fax) %>
+    <%= f.text_field :fax %>
+  </div>
+  <div class="field">
+    <%= f.label :email, t(:email) %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :inn, t(:inn) %>
+    <%= f.text_field :inn %>
+  </div>
+  <div class="field">
+    <%= f.label :kpp, t(:kpp) %>
+    <%= f.text_field :kpp %>
+  </div>
+  <div class="field">
+    <%= f.label :ogrn, t(:ogrn) %>
+    <%= f.text_field :ogrn %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_name, t(:bank_name) %>
+    <%= f.text_field :bank_name %>
+  </div>
+  <div class="field">
+    <%= f.label :current_account, t(:current_account) %>
+    <%= f.text_field :current_account %>
+  </div>
+  <div class="field">
+    <%= f.label :correspondent_account, t(:correspondent_account) %>
+    <%= f.text_field :correspondent_account %>
+  </div>
+  <div class="field">
+    <%= f.label :bik, t(:bik) %>
+    <%= f.text_field :bik %>
+  </div>
+  <div class="field">
+    <%= f.label :bank_person, t(:bank_person) %>
+    <%= f.text_field :bank_person %>
+  </div>
+  <div class="field">
+    <%= f.label :type_of_certificate, t(:type_of_certificate) %>
+    <%= f.select :type_of_certificate, options_for_select([
+      "ГОСТ ISO 9001-2011 (ISO 9001:2008)",
+      "ГОСТ Р ИСО 14001-2007 (ISO 14001:2004)",
+      "ГОСТ Р 12.0.230-2007 (OHSAS 18001:2007)",
+      "SA 8000:2008",">ГОСТ Р ИСО/МЭК 27001-2006 (ISO/IEC 27001:2005)",
+      "ISO 50001:2011","ISO 22000:2005","ISO 22301:2012",
+      "Интегрированная система менеджманта качества серии ISO 9000"]) %>
+  </div>
+  <div class="field">
+    <%= f.label :auditors_name, t(:auditors_name) %>
+    <%= f.text_field :auditors_name %>
+  </div>
+  <div class="field">
+    <%= f.label "1. ", "1. ", :align => "right" %>
+    <%= tag "input", type: 'textfield', class: 'auditor' %>
+  </div>
+  <div class="field">
+    <%= f.label "2. ", "2. ", :align => "right" %>
+    <%= tag "input", type: 'textfield', class: 'auditor' %>
+  </div>
+  <div class="field">
+    <%= f.label "3. ", "3. ", :align => "right" %>
+    <%= tag "input", type: 'textfield', class: 'auditor' %>
+  </div>
+  <div class="field">
+    <%= f.label :categories_list_of_works, t(:categories_list_of_works) %><br />
+    <%= f.text_area :categories_list_of_works %>
+    <% 1.upto(3) do |category_id| %>
+      <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.\z/ }).each do |category| %>
+        <% name_id = category_id %>
+        <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
+        <%= f.label name_id, category[:path] + " " + category[:name] %><br/>
+        <div class="subcategory" id= <%= name_id %> >
+          <% 1.upto(70) do |subcategory_id| %>
+            <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.#{subcategory_id}\.\z/ }).each do |category| %>
+              <% name_id = category_id + subcategory_id * 10 %>
+              <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
+              <%= f.label name_id, category[:path] + " " + category[:name] %><br/>
+              <div class="subsubcategory" id= <%= name_id %> >
+                 <% 1.upto(10) do |subsubcategory_id| %>
+                   <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.#{subcategory_id}\.#{subsubcategory_id}\.\z/ }).each do |category| %>
+                      <% name_id = category_id + subcategory_id * 10 + subsubcategory_id * 100 %>
+                      <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
+                      <%= f.label name_id, category[:path] + " " + category[:name] %><br/>
+                      <div class="subsubsubcategory" id= <%= name_id %> >
+                         <% 1.upto(10) do |subsubsubcategory_id| %>
+                            <% (Category.all.select { |category| category.path =~ /\A#{category_id}\.#{subcategory_id}\.#{subsubcategory_id}\.#{subsubcategory_id}\.\z/ }).each do |category| %>
+                               <% name_id = category_id + subcategory_id * 10 + subsubcategory_id * 100 + subsubsubcategory_id * 1000 %>
+                               <%= tag "input", type: 'checkbox', name: name_id, value: category[:path] + " " + category[:name] %> 
+                               <%= f.label name_id, category[:path] + " " + category[:name] %><br/>
+                            <% end %>
+                         <% end %>
+                      </div>
+                   <% end %>
+                <% end %>
+             </div>
+          <% end %>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+    <%= tag "input", type: 'checkbox', id: 'otherCheckBox' %> 
+    <%= f.label "other", t(:other) %>
+    <%= text_area "other", "other", :id => 'otherTextArea' %>
+  </div>
+  <div class="actions">
+    <%= f.submit :value => t(:submit_create_form) %>
+  </div>
+<% end %>
