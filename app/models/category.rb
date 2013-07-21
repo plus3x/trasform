@@ -12,5 +12,7 @@ class Category < ActiveRecord::Base
   end
 
   def parent_path
-    parent = path.gsub(/
+    parent = path.sub(/\d+\.\z/, '')
+    parent.empty? ? '0' : parent
+  end
 end

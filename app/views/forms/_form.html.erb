@@ -106,27 +106,15 @@
     <%= tag "input", type: 'textfield', class: 'auditor' %>
   </div>
   <div class="field">
-    <%= f.label :categories_list_of_works, t(:categories_list_of_works) %><br />
-    <%= f.text_area :categories_list_of_works %>
-      <% @level_1_categories.each do |level1| %>
-        <%= tag "input", type: 'checkbox', name: level1.id, value: level1.full_title %> 
-        <%= f.label level1.id, level1.full_title %>
-	<br />
-	<div class="subcategory" id=<%= level1.id %> >
-	  <% @level_2_categories_with_parent_ids[level1.path].each do |level2| %>
-	    <%= tag "input", type: 'checkbox', name: level2.id, value: level2.full_title %> 
-	    <%= f.label level2.id, level2.full_title %>
-	    <br />
-	    <div class="subsubcategory" id=<%= level2.id %> >
-	      <% @level_3_categories_with_parent_ids[level2.path].each do |level3| %>
-		<%= tag "input", type: 'checkbox', name: level3.id, value: level3.full_title %> 
-		<%= f.label level3.id, level3.full_title %>
-		<br />
-	      <% end %>
-	    </div>
-	  <% end %>
-	</div>
+    <%= f.label "Вариант Антона" %>
+    <br />
+    <% @categories_with_parent_path['0'].each do |root_category| %>
+      <%= tag "input", type: 'checkbox', name: root_category.id, value: root_category.full_title %> 
+      <%= f.label root_category.id, root_category.full_title %>
+      <% @categories_with_parent_path['0'].each do |root_category| %>
       <% end %>
+      <br />
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :categories_list_of_works, t(:categories_list_of_works) %><br />
