@@ -26,6 +26,20 @@ class FormsController < ApplicationController
   def new
     @form = Form.new
 
+    @level_1_categories = Category.all.select { |category| category.path =~ /\A\d+\.\z/ }
+
+    level_2_categories = Category.all.select { |category| category.path =~ /\A\d+\.\d+\.\z/ }
+    @level_2_categories_with_parent_ids = {}
+    @level_1_categories.each do |cat|
+      @level_2_categories_with_parent_ids[cat.path] = level_2_categories.select { |c| c.path =~ /\A#{cat.id}+\./ }
+    end
+
+    level_3_categories = Category.all.select { |category| category.path =~ /\A\d+\.\d+\.\d+\.\z/ }
+    @level_3_categories_with_parent_ids = {}
+    level_2_categories.each do |cat|
+      @level_3_categories_with_parent_ids[cat.path] = level_3_categories.select { |c| c.path =~ /\A\d+\.#{cat.id}+\./ }
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @form }
