@@ -25,20 +25,28 @@ class FormsController < ApplicationController
   # GET /forms/new.json
   def new
     @form = Form.new
+    
+    @categories_with_parent_path = {}
+    category_matchers = [/\A(\d+\.){1}\z/, /\A(\d+\.){2}\z/, /\A(\d+\.){3}\z/, /\A(\d+\.){4}\z/]
 
-    @level_1_categories = Category.all.select { |category| category.path =~ /\A\d+\.\z/ }
-
-    level_2_categories = Category.all.select { |category| category.path =~ /\A\d+\.\d+\.\z/ }
-    @level_2_categories_with_parent_ids = {}
-    @level_1_categories.each do |cat|
-      @level_2_categories_with_parent_ids[cat.path] = level_2_categories.select { |c| c.path =~ /\A#{cat.id}+\./ }
+    category_matchers.each do |matcher|
+      matched_categories = Category.all.sory_by(&:path).select { |category| category.path =~ matcher }
+      @categories_with_parent_path[matched_categories.first.path] = matched_categories
     end
 
-    level_3_categories = Category.all.select { |category| category.path =~ /\A\d+\.\d+\.\d+\.\z/ }
-    @level_3_categories_with_parent_ids = {}
-    level_2_categories.each do |cat|
-      @level_3_categories_with_parent_ids[cat.path] = level_3_categories.select { |c| c.path =~ /\A\d+\.#{cat.id}+\./ }
-    end
+    #@level_1_categories = Category.all.select { |category| category.path =~ /\A\d+\.\z/ }
+
+    #level_2_categories = Category.all.select { |category| category.path =~ /\A\d+\.\d+\.\z/ }
+    #@level_2_categories_with_parent_ids = {}
+    #@level_1_categories.each do |cat|
+    #  @level_2_categories_with_parent_ids[cat.path] = level_2_categories.select { |c| c.path =~ /\A#{cat.id}+\./ }
+    #end
+
+    #level_3_categories = Category.all.select { |category| category.path =~ /\A\d+\.\d+\.\d+\.\z/ }
+    #@level_3_categories_with_parent_ids = {}
+    #level_2_categories.each do |cat|
+    #  @level_3_categories_with_parent_ids[cat.path] = level_3_categories.select { |c| c.path =~ /\A\d+\.#{cat.id}+\./ }
+    #end
 
     respond_to do |format|
       format.html # new.html.erb

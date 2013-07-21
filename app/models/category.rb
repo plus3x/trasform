@@ -10,4 +10,7 @@ class Category < ActiveRecord::Base
   def full_title
     "#{path} #{name}"
   end
+
+  def parent_path
+    parent = path.gsub(/
 end
