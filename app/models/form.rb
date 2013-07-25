@@ -1,4 +1,6 @@
 class Form < ActiveRecord::Base
+ 
+  attr_accessible :type_of_legal_entity, :actual_address, :address_on_english, :auditors_name, :bank_name, :bank_person, :bik, :categories_list_of_works, :company, :correspondent_account, :creator_name, :current_account, :email, :fax, :inn, :kpp, :ogrn, :phone, :registered_address, :type_of_certificate
   
   before_validation :normalize_phone, :normalize_fax, :attributes
   
@@ -9,18 +11,6 @@ class Form < ActiveRecord::Base
   def normalize_fax
     self.fax.gsub(/[^\d]/, "")
   end
-  
- # def summ_checkboxes_to_categories
- #   self.attributes.each_pair do |key, element| 
-  #    :categories_list_of_works = element.strip + "\n" if element.respond_to?('strip')
- #   end
-  #end
-  
- # def attributes
- #   self.attributes
- # end
-  
-  attr_accessible :type_of_legal_entity, :actual_address, :address_on_english, :auditors_name, :bank_name, :bank_person, :bik, :categories_list_of_works, :company, :correspondent_account, :creator_name, :current_account, :email, :fax, :inn, :kpp, :ogrn, :phone, :registered_address, :type_of_certificate
   
   validates :type_of_legal_entity, :bank_name, :bank_person, :categories_list_of_works, :company, :creator_name, :type_of_certificate, presence: true
   validates :bik, presence: true, format: { with: %r{\d{9}}i, message: 'must be contain nine numbers.' }
