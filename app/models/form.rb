@@ -1,6 +1,12 @@
 class Form < ActiveRecord::Base
-  before_validation do
+  
+  before_validation :normalize_phone, :normalize_fax
+  
+  def normalize_phone
     self.phone.gsub(/[^\d]/, "")
+  end
+  
+  def normalize_fax
     self.fax.gsub(/[^\d]/, "")
   end
   
