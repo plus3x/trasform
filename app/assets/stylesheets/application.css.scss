@@ -19,7 +19,6 @@ body {
     background: #00CC99;
     padding: 25px 0px 0px 25px;
     margin: 0px;
-    border-bottom: 2px solid black;
     font: small-caps 42px/42px "Times New Roman", serif;
     color: white;
     text-align: left;
@@ -32,7 +31,6 @@ body {
       padding: 0;
       width: 100%;
       background: #000;
-      border-bottom: 2px solid black;
       ul {
         padding: 1px 25px;
         margin: 0;
@@ -43,13 +41,8 @@ body {
           a {
             padding: 0px 25px;
             color: #FFF;
-            text-decoration: none; 
-          }
-          a:hover {
-            background: #00CC99;
-          }
-          a:active {
-            background: #00CC99;
+            text-decoration: none;
+            &:hover { background: #00CC99; }
           }
         }
       }
@@ -69,3 +62,7 @@ body {
     height: 30px
   }
 }
+
+.home       #columns #side ul li a[href="/"]           { color: black; background: #FFFFEE; }
+.forms      #columns #side ul li a[href="/forms"]      { color: black; background: #FFFFEE; }
+.categories #columns #side ul li a[href="/categories"] { color: black; background: #FFFFEE; }
