@@ -6,7 +6,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class='<%= controller.controller_name %>'>
+<body class="<%= controller.controller_name %>">
   <div id="banner">
     <% image_tag("logo.png") %>
     <%= @page_title || "Сертификаты" %>
@@ -14,9 +14,9 @@
   <div id="columns">
     <div id="side"> 
       <ul>
-        <%= content_tag(:li, link_to("Домашняя страница", home_path)) %>
-        <%= content_tag(:li, link_to("Формы", forms_path)) %>
-        <%= content_tag(:li, link_to("Категории", categories_path)) %>
+        <%= content_tag(:li, link_to("Домашняя страница", home_path, :id => ("current_page" if current_page? home_path) ) ) %>
+        <%= content_tag(:li, link_to("Формы", forms_path, :id => ("current_page" if current_page? forms_path) ) ) %>
+        <%= content_tag(:li, link_to("Категории", categories_path, :id => ("current_page" if current_page? categories_path) ) ) %>
       </ul>
     </div>
     <div id="main"> 

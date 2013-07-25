@@ -35,6 +35,7 @@ body {
         padding: 1px 25px;
         margin: 0;
         li {
+          align: center;
           display: inline;
           list-style: none;
           font: small-caps 22px/22px "Times New Roman", serif;
@@ -43,6 +44,7 @@ body {
             color: #FFF;
             text-decoration: none;
             &:hover { background: #00CC99; }
+            &#current_page { color: #000; background: #FFE; }
           }
         }
       }
@@ -62,7 +64,3 @@ body {
     height: 30px
   }
 }
-
-.home       #columns #side ul li a[href="/"]           { color: black; background: #FFFFEE; }
-.forms      #columns #side ul li a[href="/forms"]      { color: black; background: #FFFFEE; }
-.categories #columns #side ul li a[href="/categories"] { color: black; background: #FFFFEE; }

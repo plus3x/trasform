@@ -1,6 +1,6 @@
 class Form < ActiveRecord::Base
   
-  before_validation :normalize_phone, :normalize_fax
+  before_validation :normalize_phone, :normalize_fax, :attributes
   
   def normalize_phone
     self.phone.gsub(/[^\d]/, "")
@@ -9,6 +9,16 @@ class Form < ActiveRecord::Base
   def normalize_fax
     self.fax.gsub(/[^\d]/, "")
   end
+  
+ # def summ_checkboxes_to_categories
+ #   self.attributes.each_pair do |key, element| 
+  #    :categories_list_of_works = element.strip + "\n" if element.respond_to?('strip')
+ #   end
+  #end
+  
+ # def attributes
+ #   self.attributes
+ # end
   
   attr_accessible :type_of_legal_entity, :actual_address, :address_on_english, :auditors_name, :bank_name, :bank_person, :bik, :categories_list_of_works, :company, :correspondent_account, :creator_name, :current_account, :email, :fax, :inn, :kpp, :ogrn, :phone, :registered_address, :type_of_certificate
   
