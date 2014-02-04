@@ -6,4 +6,11 @@ class Category < ActiveRecord::Base
     with: %r{\A(\d{0,2}\.){1}(\d{0,2}\.){0,1}(\d{0,2}\.){0,1}(\d{0,2}\.){0,1}\Z}i,
     message: 'must be look likes "1." or "3.1." or "10.2.30.4.".'
   }
+
+  def full_title
+    "#{path} #{name}"
+  end
+
+  def parent_path
+    parent = path.gsub(/
 end
